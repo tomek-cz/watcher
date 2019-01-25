@@ -498,8 +498,7 @@ func (w *Watcher) retrieveFileList() map[string]os.FileInfo {
 					w.mu.Unlock()
 					if name == err.(*os.PathError).Path {
 						w.Error <- ErrWatchedFileDeleted
-						//tomek - comment out
-						//w.RemoveRecursive(name)
+						w.RemoveRecursive(name)
 					}
 					w.mu.Lock()
 				} else {
@@ -513,8 +512,7 @@ func (w *Watcher) retrieveFileList() map[string]os.FileInfo {
 					w.mu.Unlock()
 					if name == err.(*os.PathError).Path {
 						w.Error <- ErrWatchedFileDeleted
-						//tomek - comment out
-						//w.Remove(name)
+						w.Remove(name)
 					}
 					w.mu.Lock()
 				} else {
